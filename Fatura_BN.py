@@ -11,7 +11,7 @@ import xml.etree.ElementTree as ET
 
 # ADL ubl veri alma
 
-directory = 'D:/TR/XML_ADL'
+directory = 'D:/TR/XML_BN'
 
 df_list = []
 
