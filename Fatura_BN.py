@@ -1,6 +1,4 @@
-## Invoice UBL (xml) data extraction 
-
-#Fatura xml dosyasından veri alma. 09.04.2023 tarihinden Yunus Karagün tarafından yazılmıştır. Tüm hakları saklıdır. yunus.karagun@gmail.com
+#Fatura xml dosyasından veri alma. 23.03.2023 tarihinden Yunus Karagün tarafından yazılmıştır. Tüm hakları saklıdır. yunus.karagun@gmail.com
 
 
 import numpy as np
@@ -9,9 +7,13 @@ import os
 from lxml import etree
 import xml.etree.ElementTree as ET
 
-# ADL ubl veri alma
+
+# BT ubl veri alma
 
 directory = 'D:/TR/XML_BN'
+# directory = 'D:/MAL-UBL/2021-2022/9250502221'
+
+
 
 df_list = []
 
@@ -105,7 +107,8 @@ df_final = pd.concat(df_list, axis=0, ignore_index=True)
 #Veri türlerinin uygun olana geçirilmesi
 
 # df_final["buyer_name"]=df_final["buyer_name"].replace("Sevk Yeri:","", regex=True)
-df_final = df_final.astype({'invoice_date': 'datetime64',
+df_final = df_final.astype({
+#                            'invoice_date': 'datetime64',
                             'line_number': 'int64',
                             'quantity': 'float64',
                             'price': 'float64',
@@ -115,10 +118,11 @@ df_final = df_final.astype({'invoice_date': 'datetime64',
                             'discamount': 'float64',
                             'discpercent': 'float64'})
 
+
 data = {'Copyright Notice':  ['Tüm Hakları saklıdır.', 'Yunus Karagün tarafından 03.04.2023 tarihinde geliştirilmiştir.', 'İletişim için: yunus.karagun@gmail.com']
         }
 Copyright = pd.DataFrame(data)
 
-with pd.ExcelWriter("D:\TR\BN_Invoice_Data.xlsx") as writer: 
+with pd.ExcelWriter("D:/TR/2024_11_BN_Invoice_Data.xlsx") as writer: 
         Copyright.to_excel(writer, sheet_name='Copyright', index=False)
         df_final.to_excel(writer, sheet_name='Data')
