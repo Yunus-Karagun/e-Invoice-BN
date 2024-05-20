@@ -97,7 +97,7 @@ for filename in os.listdir(directory):
         df_line_items = pd.json_normalize(line_items)
         df = pd.concat([df, df_line_items], axis=1)
         df.drop('line_items', axis=1, inplace=True)
-        df.fillna(method='ffill', inplace=True)
+        df.ffill(inplace=True)
 
         df_list.append(df)
 
